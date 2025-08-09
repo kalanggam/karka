@@ -16,7 +16,7 @@ impl Default for Config {
 
 struct SiteOptions {
     name: Option<String>,
-    author: Option<SiteAuthor>,
+    author: Option<Vec<SiteAuthor>>,
     base_url: String,
 }
 
@@ -24,7 +24,7 @@ impl Default for SiteOptions {
     fn default() -> Self {
         Self {
             name: Some("Example site".into()),
-            author: Some(SiteAuthor::default()),
+            author: Some(vec![SiteAuthor::default()]),
             base_url: "https://www.example.com".into(),
         }
     }

@@ -4,7 +4,7 @@
 name = "Example site"
 base_url = "https://www.example.com"
 
-[site.author]
+[[site.authors]]
 name = "Your name here"
 email = "name@example.com"
 fediverse = "name@example.social"
