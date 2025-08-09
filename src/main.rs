@@ -1,10 +1,11 @@
+mod cli;
+mod config;
+mod error;
+mod karka;
+
 use tera::Tera;
 
-struct Karka {
-}
-
-impl Karka {
-}
+use crate::cli::parse_args;
 
 fn main() {
     let tera = match Tera::new("src/**/*.html") {

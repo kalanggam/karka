@@ -1,0 +1,30 @@
+# Example karka configuration
+
+[site]
+name = "Example site"
+base_url = "https://www.example.com"
+
+[site.author]
+name = "Your name here"
+email = "name@example.com"
+fediverse = "name@example.social"
+
+[i18n]
+input = "frontmatter"
+output = "subdir_except_default"
+default = "en"
+languages = ["en"]
+
+[build]
+verbose = false
+include_drafts = false
+ignore = ".karkaignore"
+
+[build.dirs]
+assets = "_assets"
+data = "_data"
+schemas = "_schemas"
+templates = "_templates"
+pages = "pages"
+content = "content"
+output = "dist"
