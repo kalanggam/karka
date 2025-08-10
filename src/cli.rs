@@ -3,12 +3,11 @@ use clap::{Parser, Subcommand};
 #[derive(Parser)]
 pub struct Cli {
     #[command(subcommand)]
-    command: Command,
+    pub command: Command,
 }
 
 #[derive(Subcommand)]
-enum Command {
-    //// Build site
+pub enum Command {
     Build,
 }
 
