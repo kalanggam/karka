@@ -1,31 +1,23 @@
 pub struct Config {
-    site: SiteOptions,
+    site_name: Option<String>,
+    base_url: String,
+    verbose: bool,
+    include_drafts: bool,
+    ignore: Option<String>,
+    authors: Option<Vec<SiteAuthor>>,
     i18n: Option<I18nOptions>,
-    build: BuildOptions,
 }
 
 impl Default for Config {
     fn default() -> Self {
         Self {
-            site: SiteOptions::default(),
-            i18n: None,
-            build: BuildOptions::default(),
-        }
-    }
-}
-
-struct SiteOptions {
-    name: Option<String>,
-    author: Option<Vec<SiteAuthor>>,
-    base_url: String,
-}
-
-impl Default for SiteOptions {
-    fn default() -> Self {
-        Self {
-            name: Some("Example site".into()),
-            author: Some(vec![SiteAuthor::default()]),
+            site_name: Some("Example site".into()),
             base_url: "https://www.example.com".into(),
+            verbose: true,
+            include_drafts: false,
+            ignore: Some(".karkaignore".into()),
+            authors: Some(vec![SiteAuthor::default()]),
+            i18n: None,
         }
     }
 }
@@ -72,25 +64,7 @@ enum I18nOutputMode {
     SubdirExceptDefault,
 }
 
-struct BuildOptions {
-    verbose: Option<bool>,
-    include_drafts: Option<bool>,
-    ignore: Option<String>,
-    dirs: BuildDirs,
-}
-
-impl Default for BuildOptions {
-    fn default() -> Self {
-        Self {
-            verbose: Some(false),
-            include_drafts: Some(false),
-            ignore: Some(".karkaignore".into()),
-            dirs: BuildDirs::default(),
-        }
-    }
-}
-
-struct BuildDirs {
+struct ConfigDirs {
     assets: Option<String>,
     data: Option<String>,
     schemas: Option<String>,
@@ -100,9 +74,9 @@ struct BuildDirs {
     output: Option<String>,
 }
 
-impl Default for BuildDirs {
+impl Default for ConfigDirs {
     fn default() -> Self {
-        BuildDirs {
+        ConfigDirs {
             assets: Some("_assets".into()),
             data: Some("_data".into()),
             schemas: Some("_schemas".into()),

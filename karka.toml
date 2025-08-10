@@ -1,26 +1,17 @@
 # Example karka configuration
 
-[site]
-name = "Example site"
+site_name = "Example site"
 base_url = "https://www.example.com"
-
-[[site.authors]]
-name = "Your name here"
-email = "name@example.com"
-fediverse = "name@example.social"
-
-[i18n]
-input = "frontmatter"
-output = "subdir_except_default"
-default = "en"
-languages = ["en"]
-
-[build]
 verbose = false
 include_drafts = false
 ignore = ".karkaignore"
 
-[build.dirs]
+[[authors]]
+name = "Your name here"
+email = "name@example.com"
+fediverse = "name@example.social"
+
+[dirs]
 assets = "_assets"
 data = "_data"
 schemas = "_schemas"
@@ -28,3 +19,9 @@ templates = "_templates"
 pages = "pages"
 content = "content"
 output = "dist"
+
+[i18n]
+input = "frontmatter"
+output = "subdir_except_default"
+default = "en"
+languages = ["en"]
