@@ -1,10 +1,13 @@
+use std::path::PathBuf;
+
 pub struct Config {
-    site_name: Option<String>,
-    base_url: String,
-    verbose: bool,
-    include_drafts: bool,
-    ignore: Option<String>,
-    authors: Option<Vec<SiteAuthor>>,
+    pub site_name: Option<String>,
+    pub base_url: String,
+    pub verbose: bool,
+    pub include_drafts: bool,
+    pub ignore: Option<String>,
+    pub authors: Option<Vec<SiteAuthor>>,
+    pub paths: ConfigPaths,
 }
 
 impl Default for Config {
@@ -16,14 +19,15 @@ impl Default for Config {
             include_drafts: false,
             ignore: Some(".karkaignore".into()),
             authors: Some(vec![SiteAuthor::default()]),
+            paths: ConfigPaths::default(),
         }
     }
 }
 
-struct SiteAuthor {
-    name: Option<String>,
-    email: Option<String>,
-    fediverse: Option<String>,
+pub struct SiteAuthor {
+    pub name: Option<String>,
+    pub email: Option<String>,
+    pub fediverse: Option<String>,
 }
 
 impl Default for SiteAuthor {
@@ -36,26 +40,26 @@ impl Default for SiteAuthor {
     }
 }
 
-struct ConfigDirs {
-    assets: Option<String>,
-    data: Option<String>,
-    schemas: Option<String>,
-    templates: Option<String>,
-    pages: Option<String>,
-    content: Option<String>,
-    output: Option<String>,
+pub struct ConfigPaths {
+    pub assets: Option<PathBuf>,
+    pub data: Option<PathBuf>,
+    pub schemas: Option<PathBuf>,
+    pub templates: PathBuf,
+    pub pages: PathBuf,
+    pub content: Option<PathBuf>,
+    pub output: PathBuf,
 }
 
-impl Default for ConfigDirs {
+impl Default for ConfigPaths {
     fn default() -> Self {
-        ConfigDirs {
+        ConfigPaths {
             assets: Some("_assets".into()),
             data: Some("_data".into()),
             schemas: Some("_schemas".into()),
-            templates: Some("_templates".into()),
-            pages: Some("pages".into()),
+            templates: "_templates".into(),
+            pages: "pages".into(),
             content: Some("content".into()),
-            output: Some("dist".into()),
+            output: "dist".into(),
         }
     }
 }

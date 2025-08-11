@@ -11,7 +11,7 @@ name = "Your name here"
 email = "name@example.com"
 fediverse = "name@example.social"
 
-[dirs]
+[paths]
 assets = "_assets"
 data = "_data"
 schemas = "_schemas"
