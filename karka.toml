@@ -20,8 +20,8 @@ pages = "pages"
 content = "content"
 output = "dist"
 
-[i18n]
-input = "frontmatter"
-output = "subdir_except_default"
-default = "en"
-languages = ["en"]
+# [i18n]
+# input = "frontmatter"
+# output = "subdir_except_default"
+# default = "en"
+# languages = ["en"]

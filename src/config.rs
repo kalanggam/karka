@@ -5,7 +5,6 @@ pub struct Config {
     include_drafts: bool,
     ignore: Option<String>,
     authors: Option<Vec<SiteAuthor>>,
-    i18n: Option<I18nOptions>,
 }
 
 impl Default for Config {
@@ -17,7 +16,6 @@ impl Default for Config {
             include_drafts: false,
             ignore: Some(".karkaignore".into()),
             authors: Some(vec![SiteAuthor::default()]),
-            i18n: None,
         }
     }
 }
@@ -36,32 +34,6 @@ impl Default for SiteAuthor {
             fediverse: Some("name@example.social".into()),
         }
     }
-}
-
-struct I18nOptions {
-    input: Option<I18nInputMode>,
-    output: Option<I18nOutputMode>,
-    default: Option<String>,
-    languages: Vec<String>,
-}
-
-impl Default for I18nOptions {
-    fn default() -> Self {
-        Self {
-            input: Some(I18nInputMode::Frontmatter),
-            output: Some(I18nOutputMode::SubdirExceptDefault),
-            default: Some("en".into()),
-            languages: vec!["en".into()],
-        }
-    }
-}
-
-enum I18nInputMode {
-    Frontmatter,
-}
-
-enum I18nOutputMode {
-    SubdirExceptDefault,
 }
 
 struct ConfigDirs {

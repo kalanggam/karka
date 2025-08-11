@@ -11,9 +11,9 @@ fn main() {
         env!("CARGO_PKG_VERSION")
     );
 
-    let settings = cli::parse_args();
+    let cli = cli::parse_args();
 
-    match settings.command {
-        cli::Command::Build => karka::build(),
+    match cli.command {
+        cli::Command::Build => karka::build(cli),
     }
 }

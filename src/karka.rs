@@ -6,7 +6,7 @@ pub struct Karka {
     config: Config,
 }
 
-pub fn build() {
+pub fn build(cli: Cli) {
     log::info!("Building site...");
 
     let tera = match Tera::new("src/**/*.html") {
